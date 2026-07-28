@@ -1,0 +1,32 @@
+DAY 1 DATA QUALITY SUMMARY
+==========================
+
+Dataset: Mutual Fund Analytics
+
+1. Fund Master Validation
+- Unique AMFI codes in fund_master: 40
+- Unique AMFI codes in nav_history: 40
+- Fund Master codes missing from NAV History: 0
+- NAV History codes missing from Fund Master: 0
+- Result: PASS
+
+2. Live NAV Validation
+- HDFC Large Cap Fund (Direct Plan - Growth): AMFI 119018
+- SBI Large Cap Fund (Direct Plan - Growth): AMFI 119598
+- ICICI Prudential Large Cap Fund (Direct Plan - Growth): AMFI 120586
+- Nippon India Large Cap Fund (Direct Plan - Growth): AMFI 118632
+- Axis Large Cap Fund (Direct Plan - Growth): AMFI 120465
+- Kotak Large Cap Fund (Direct - Growth): AMFI 120152
+- Result: PASS
+
+3. Data Quality Observations
+- All 40 AMFI scheme codes in fund_master have corresponding NAV history.
+- All 40 AMFI scheme codes in nav_history are present in fund_master.
+- The original scheme codes provided for some benchmark funds did not match
+  their expected scheme names in the live mfapi.in API response.
+- Correct current scheme codes were identified and validated using the API.
+- Bluechip fund names have transitioned to Large Cap naming for several schemes.
+- Live NAV files were saved separately under data/raw/.
+- Incorrect/obsolete live NAV CSV files were removed after validation.
+
+Overall Data Quality Status: PASS
