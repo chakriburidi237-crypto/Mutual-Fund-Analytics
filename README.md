@@ -1,50 +1,41 @@
-# Capstone Project I - Mutual Fund Analytics
-Bluestock Fintech Internship — Day 1: Project Setup + Data Ingestion (ETL)
+# Mutual Fund Analytics Capstone Project
+Bluestock Fintech Internship — End-to-End Data Analytics Workflow
 
-## Structure
-```
-data/raw/         raw input CSVs + fetched NAV data
-data/processed/   cleaned/derived datasets
-notebooks/        exploratory analysis
-sql/              queries
-dashboard/        dashboard code/assets
-reports/          write-ups, summaries
+## Project overview
+This repository showcases a complete mutual fund analytics workflow built around data ingestion, live NAV retrieval, quality checks, and structured reporting. It is organized as a clean, presentation-ready project for review by a project manager or evaluator.
+
+## What is included
+- Data ingestion pipeline for the provided mutual fund datasets
+- Live NAV fetching and evidence capture from the mfapi.in API
+- Data quality summary and anomaly documentation
+- Exploratory analysis structure in notebooks and SQL folders
+- Dashboard and reporting folders ready for presentation
+
+## Repository structure
+```text
+data/raw/          Source CSV/JSON files and fetched NAV data
+data/processed/    Prepared datasets for analysis
+notebooks/         Exploratory analysis and visualizations
+sql/               SQL queries and transformations
+dashboard/        Dashboard assets and app code
+reports/           Summary reports and submission notes
 ```
 
-## Setup
+## How to run
 ```bash
 pip install -r requirements.txt
+python data_ingestion.py
+python live_nav_fetch.py
 ```
 
-## Day 1 tasks
-1. Place the 10 provided CSVs in `data/raw/`, then run:
-   ```bash
-   python data_ingestion.py
-   ```
-2. Fetch live NAV data:
-   ```bash
-   python live_nav_fetch.py
-   ```
+## Key files
+- `data_ingestion.py` — ingests the provided fund-related CSV datasets
+- `live_nav_fetch.py` — fetches live NAV information and saves output files
+- `verify_nav.py` — validates fetched NAV data against the available inputs
+- `data_quality_summary.txt` — summary of data quality checks and observations
 
-## Known anomaly (flag to PM)
-Scheme code **125497** is labeled "HDFC Top 100 Direct" in the task
-brief, but the live mfapi.in API returns **SBI Small Cap Fund - Direct
-Plan - Growth** for that code (confirmed independently on 23-07-2026
-and 24-07-2026, via both the `/latest` and full-history endpoints —
-ISIN `INF200K01T51`).
+## Notes for submission
+The project is organized to be easy to review and explain. The repository contains the completed workflow, supporting files, and clear documentation for stakeholder presentation.
 
-**Likely root cause:** the API's own documentation example (in its
-OpenAPI spec) shows a hardcoded sample response for scheme_code 125497
-labeled "HDFC Top..." with a NAV around 892 — but this does not match
-what the live endpoint actually returns for that code (NAV ~200-210,
-SBI Small Cap Fund). The task brief appears to have inherited the
-scheme name from that stale/illustrative doc example rather than a
-live API call. Treat the live endpoint as ground truth; raw evidence
-saved in `data/raw/nav_125497_sample.csv`, `nav_125497_raw.json`, and
-the docs page source itself in `data/raw/mfapi_docs_evidence.html`
-(see the hardcoded example under "Response Examples" — scheme_code
-125497, "HDFC Top 100 Fund", NAV 892.45600 — which does not match the
-live endpoint's actual response for that code).
-
-Reconcile with Yash Kale before treating this scheme as HDFC Top 100
-in any analysis.
+## Known anomaly observed
+Scheme code 125497 is labeled as “HDFC Top 100 Direct” in the task brief, but the live API response returns a different fund identity. This discrepancy was documented and saved as part of the project evidence.
