@@ -2,7 +2,6 @@
 
 > **"Data-Driven Wealth Management. Automated ETL. Quantitative Portfolio Intelligence."**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-2.2%2B-150458.svg)](https://pandas.pydata.org/)
 [![NumPy](https://img.shields.io/badge/NumPy-1.26%2B-013243.svg)](https://numpy.org/)
@@ -135,6 +134,5 @@ Nippon Large Cap Direct           2890            342.15                15.40   
 
 ---
 
-## 📄 License
+## 📄 License and Copyright\n\nAll rights reserved © 2026 Chakradhar Buridi.
 
-MIT License © 2026 Chakradhar Buridi. Developed for the Bluestock Fintech Capstone Internship.
